@@ -10,19 +10,7 @@ const serif = Merriweather({
 
 export const metadata: Metadata = {
   title: "Kevin Ma",
-  openGraph: {
-    title: "Kevin Ma",
-    images: [{
-      url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😼</text></svg>",
-      width: 100,
-      height: 100,
-    }],
-  },
-  twitter: {
-    card: "summary",
-    title: "Kevin Ma",
-    images: ["data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😼</text></svg>"],
-  },
+  description: "engineer, bettor, utilitarian",
 };
 
 export default function RootLayout({
