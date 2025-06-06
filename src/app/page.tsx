@@ -9,8 +9,11 @@ export default function Home() {
 
       <main className="mb-10">
         <p className="text-xl max-w-lg mx-auto">
-          Developer and machine learning enthusiast working on making computers think better. 
-          Twitter DMs are the best way to reach me.
+          Developer and machine learning enthusiast working on making computers think better.
+        </p>
+        <p className="text-lg mt-6">
+          Currently: Founding engineer at stealth<br />
+          Previously: Technical lead at Othram Inc.
         </p>
       </main>
 
