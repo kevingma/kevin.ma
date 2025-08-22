@@ -13,7 +13,7 @@ export default function Home() {
         </p>
         <p className="text-lg mt-6">
           Currently: Founding engineer at stealth<br />
-          Previously: Technical lead at Othram Inc.
+          Previously: Software engineer at Othram Inc.
         </p>
       </main>
 
