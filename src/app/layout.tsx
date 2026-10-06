@@ -9,6 +9,8 @@ const serif = Merriweather({
 });
 
 export const metadata: Metadata = {
+  // Absolute og:image / twitter:image URLs (Vercel used to fill this in).
+  metadataBase: new URL("https://kevin.ma"),
   title: "Kevin Ma",
   description: "",
   openGraph: {
