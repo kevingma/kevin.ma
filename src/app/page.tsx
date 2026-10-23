@@ -12,8 +12,8 @@ export default function Home() {
           Developer and machine learning enthusiast working on making computers think better.
         </p>
         <p className="text-lg mt-6">
-          Currently: Founding engineer at stealth<br />
-          Previously: Software engineer at Othram Inc.
+          Currently: Head of Engineering @ Stealth<br />
+          Previously: Founding Engineer @ Cointelligence Labs, Tech Lead @ Othram Inc
         </p>
       </main>
 
