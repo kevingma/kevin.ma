@@ -7,16 +7,6 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Kevin Ma</h1>
       </header>
 
-      <main className="mb-10">
-        <p className="text-xl max-w-lg mx-auto">
-          Developer and machine learning enthusiast working on making computers think better.
-        </p>
-        <p className="text-lg mt-6">
-          Currently: Head of Engineering @ Stealth<br />
-          Previously: Founding Engineer @ Cointelligence Labs, Tech Lead @ Othram Inc
-        </p>
-      </main>
-
       <footer className="flex gap-6 justify-center">
         <a 
           href="https://x.com/taykv2" 
