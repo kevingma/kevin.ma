@@ -11,7 +11,7 @@ const pageTitle = title ? `${title} · Kevin Ma` : "Kevin Ma";
 // The build writes shelf.html; the address people use is /shelf.
 const path = Astro.url.pathname.replace(/(\/index)?\.html$/, "").replace(/\/$/, "") || "/";
 const canonical = new URL(path, Astro.site);
-const nav = ["shelf", "projects", "now"];
+const nav = ["shelf", "projects"];
 ---
 
 <!doctype html>
