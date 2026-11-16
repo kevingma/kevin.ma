@@ -1,0 +1,47 @@
+---
+import ShelfRow from "../components/ShelfRow.astro";
+import Wall from "../components/Wall.astro";
+import Base from "../layouts/Base.astro";
+import { getShelf, month, verb } from "../lib/shelf";
+
+const shelf = await getShelf();
+---
+
+<Base title="Shelf">
+  <Wall />
+
+  {
+    shelf.now.length > 0 && (
+      <section>
+        <h2>now</h2>
+        <ul class="rows wide-lead">
+          {shelf.now.map((item) => <ShelfRow item={item} lead={verb(item)} />)}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    shelf.next.length > 0 && (
+      <section>
+        <h2>next</h2>
+        <ul class="rows wide-lead">
+          {shelf.next.map((item) => <ShelfRow item={item} lead={item.kind} />)}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    shelf.years.map(({ year, items }, i) => (
+      <section>
+        <h2>
+          {year} {i === 0 && <span>out of 5 · ★ favorite</span>}
+        </h2>
+        <ul class="rows">
+          {items.map((item) => <ShelfRow item={item} lead={month(item.finished!)} />)}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

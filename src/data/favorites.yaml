@@ -1,0 +1,41 @@
+# The wall at the top of /shelf: up to 4 books and 4 films, in rank order.
+- kind: book
+  title: Crazy Like Us
+  creator: Ethan Watters
+  year: 2010
+  cover: ../assets/covers/crazy-like-us.jpg
+- kind: book
+  title: Strangers to Ourselves
+  creator: Rachel Aviv
+  year: 2022
+  cover: ../assets/covers/strangers-to-ourselves.jpg
+- kind: book
+  title: East of Eden
+  creator: John Steinbeck
+  year: 1952
+  cover: ../assets/covers/east-of-eden.jpg
+- kind: book
+  title: When We Cease to Understand the World
+  creator: Benjamín Labatut
+  year: 2020
+  cover: ../assets/covers/when-we-cease-to-understand-the-world.jpg
+- kind: film
+  title: Koyaanisqatsi
+  creator: Godfrey Reggio
+  year: 1982
+  cover: ../assets/covers/koyaanisqatsi.jpg
+- kind: film
+  title: Good Time
+  creator: Josh and Benny Safdie
+  year: 2017
+  cover: ../assets/covers/good-time.jpg
+- kind: film
+  title: Cinema Paradiso
+  creator: Giuseppe Tornatore
+  year: 1988
+  cover: ../assets/covers/cinema-paradiso.jpg
+- kind: film
+  title: Waking Life
+  creator: Richard Linklater
+  year: 2001
+  cover: ../assets/covers/waking-life.jpg

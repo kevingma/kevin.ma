@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import { getWall } from "../lib/shelf";
+
+const rows = await getWall();
+---
+
+{
+  rows.map((row) => (
+    <section class="wall">
+      <h3>{row.label}</h3>
+      <ul>
+        {row.items.map((item) => {
+          const name = [item.title, item.creator, item.year].filter(Boolean).join(", ");
+          return (
+            <li title={name}>
+              <Image
+                src={item.cover}
+                alt={name}
+                width={480}
+                height={720}
+                fit="cover"
+                widths={[160, 320, 480]}
+                sizes="(max-width: 46rem) 23vw, 160px"
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))
+}

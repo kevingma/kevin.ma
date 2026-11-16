@@ -1,0 +1,11 @@
+# What I've read and watched. Newest first.
+#
+# - kind: book | film | article
+#   title: Piranesi
+#   creator: Susanna Clarke
+#   year: 2020            # optional
+#   status: done | now | next
+#   finished: 2026-11     # done only, month not day
+#   rating: 4.5           # done only, optional, 0.5 to 5 in halves
+#   favorite: true        # done only, optional, never on articles
+[]

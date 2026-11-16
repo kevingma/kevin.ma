@@ -1,0 +1,58 @@
+---
+import NowList from "../components/NowList.astro";
+import ShelfRow from "../components/ShelfRow.astro";
+import Base from "../layouts/Base.astro";
+import { getNowLines, getProjects, getShelf, month } from "../lib/shelf";
+
+const shelf = await getShelf();
+const lately = shelf.done.slice(0, 5);
+const projects = (await getProjects()).slice(0, 4);
+const hasNow = shelf.now.length > 0 || (await getNowLines()).length > 0;
+---
+
+<Base>
+  <p class="links">
+    <a href="https://x.com/taykv2">x</a>
+    <a href="https://github.com/kevingma">github</a>
+  </p>
+
+  {
+    hasNow && (
+      <section>
+        <h2>now</h2>
+        <NowList />
+      </section>
+    )
+  }
+
+  {
+    lately.length > 0 && (
+      <section>
+        <h2>
+          lately <a href="/shelf">all →</a>
+        </h2>
+        <ul class="rows">
+          {lately.map((item) => <ShelfRow item={item} lead={month(item.finished!)} />)}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    projects.length > 0 && (
+      <section>
+        <h2>
+          projects <a href="/projects">all →</a>
+        </h2>
+        <ul class="rows projects">
+          {projects.map((p) => (
+            <li class="row">
+              <span class="lead">{p.url ? <a href={p.url}>{p.name}</a> : p.name}</span>
+              <span class="what">{p.line}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Base>

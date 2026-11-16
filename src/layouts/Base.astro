@@ -1,0 +1,53 @@
+---
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/site.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const pageTitle = title ? `${title} · Kevin Ma` : "Kevin Ma";
+// The build writes shelf.html; the address people use is /shelf.
+const path = Astro.url.pathname.replace(/(\/index)?\.html$/, "").replace(/\/$/, "") || "/";
+const canonical = new URL(path, Astro.site);
+const nav = ["shelf", "projects"];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😼</text></svg>"
+    />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Kevin Ma" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="name" href="/">kevin ma</a>
+      <nav>
+        {
+          nav.map((page) => (
+            <a href={`/${page}`} aria-current={path === `/${page}` ? "page" : undefined}>
+              {page}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import { getProjects } from "../lib/shelf";
+
+const projects = await getProjects();
+---
+
+<Base title="Projects">
+  {
+    projects.length > 0 && (
+      <section>
+        <h2>projects</h2>
+        <ul class="rows projects">
+          {projects.map((p) => (
+            <li class="row">
+              <span class="lead">{p.url ? <a href={p.url}>{p.name}</a> : p.name}</span>
+              <span class="what">{p.line}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Base>
