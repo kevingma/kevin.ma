@@ -1,0 +1,250 @@
+/* Everything on the site is one monospace face on a character grid: widths
+   are in ch, vertical spacing is in lines (--line). */
+
+:root {
+  --bg: #fff;
+  --fg: #111;
+  --dim: #707070;
+  --rule: #e6e6e6;
+  --line: 22px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c0c0c;
+    --fg: #e6e6e6;
+    --dim: #8c8c8c;
+    --rule: #262626;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 15px;
+  font-weight: 450;
+  font-variant-ligatures: none;
+  line-height: var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: calc(var(--line) * 2) 2ch calc(var(--line) * 4);
+}
+
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* Header: name on the left, the three pages on the right. */
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2ch;
+}
+
+.top a {
+  text-decoration: none;
+}
+
+.top .name {
+  font-weight: 700;
+}
+
+.top nav {
+  display: flex;
+  gap: 2ch;
+  color: var(--dim);
+}
+
+.top nav a:hover,
+.top nav a[aria-current] {
+  color: var(--fg);
+}
+
+.links {
+  display: flex;
+  gap: 2ch;
+  margin-top: var(--line);
+}
+
+/* Sections: a dim one-word label, an optional link or note on the right. */
+
+section {
+  margin-top: var(--line);
+}
+
+h2,
+h3 {
+  display: flex;
+  justify-content: space-between;
+  gap: 2ch;
+  color: var(--dim);
+}
+
+h2 :is(a, span) {
+  text-decoration: none;
+}
+
+h2 a:hover {
+  color: var(--fg);
+}
+
+/* Rows: lead column, the thing, then kind, rating and star on finished ones. */
+
+.row {
+  display: grid;
+  grid-template-columns: var(--lead, 4ch) minmax(0, 1fr);
+  column-gap: 2ch;
+}
+
+.row.done {
+  grid-template-columns: var(--lead, 4ch) minmax(0, 1fr) 7ch 3ch 1ch;
+}
+
+.wide-lead {
+  --lead: 9ch;
+}
+
+.projects {
+  --lead: 14ch;
+}
+
+.lead,
+.by,
+.kind {
+  color: var(--dim);
+}
+
+.projects .lead {
+  color: inherit;
+}
+
+.by::before {
+  content: " — ";
+  white-space: pre;
+}
+
+/* The wall: one row of four covers per kind. */
+
+.wall + section:not(.wall) {
+  margin-top: calc(var(--line) * 2);
+}
+
+.wall ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2ch;
+  margin-top: calc(var(--line) / 4);
+}
+
+.wall img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--rule);
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+}
+
+/* Phones: one size down, the creator moves under the title. */
+
+@media (max-width: 46rem) {
+  html {
+    --line: 20px;
+    font-size: 13px;
+  }
+
+  body {
+    padding: var(--line) 2ch calc(var(--line) * 3);
+  }
+
+  /* A finished entry takes two lines: month, title, rating, star; then the
+     creator with the kind under the rating. */
+  .row.done {
+    grid-template-columns: var(--lead, 4ch) minmax(0, 1fr) 7ch 1ch;
+  }
+
+  .row.done .what {
+    display: contents;
+  }
+
+  .row.done .lead {
+    grid-area: 1 / 1;
+  }
+
+  .row.done .title {
+    grid-area: 1 / 2;
+  }
+
+  .row.done .by {
+    grid-area: 2 / 2;
+  }
+
+  .row.done .rating {
+    grid-area: 1 / 3;
+  }
+
+  .row.done .kind {
+    grid-area: 2 / 3;
+  }
+
+  .row.done .fav {
+    grid-area: 1 / 4;
+  }
+
+  .by {
+    display: block;
+  }
+
+  .by::before {
+    content: none;
+  }
+
+  .wall ul {
+    gap: 1ch;
+  }
+
+  .projects {
+    --lead: 10ch;
+  }
+}

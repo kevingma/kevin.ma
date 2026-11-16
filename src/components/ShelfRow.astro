@@ -1,0 +1,29 @@
+---
+import type { Item } from "../lib/shelf";
+
+interface Props {
+  item: Item;
+  /** Left column: the month for a finished entry, the kind or a verb otherwise. */
+  lead: string;
+}
+
+const { item, lead } = Astro.props;
+const done = item.status === "done";
+---
+
+<li class:list={["row", { done }]}>
+  <span class="lead">{lead}</span>
+  <span class="what">
+    <span class="title">{item.title}</span>
+    {item.creator && <span class="by">{item.creator}</span>}
+  </span>
+  {
+    done && (
+      <>
+        <span class="kind">{item.kind}</span>
+        <span class="rating">{item.rating}</span>
+        <span class="fav">{item.favorite && <span aria-label="favorite">★</span>}</span>
+      </>
+    )
+  }
+</li>

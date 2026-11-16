@@ -1,0 +1,20 @@
+---
+import { getNowLines, getShelf, verb } from "../lib/shelf";
+import ShelfRow from "./ShelfRow.astro";
+
+// What is in progress on the shelf, then the hand-written lines.
+const { now } = await getShelf();
+const lines = await getNowLines();
+---
+
+<ul class="rows wide-lead">
+  {now.map((item) => <ShelfRow item={item} lead={verb(item)} />)}
+  {
+    lines.map((line) => (
+      <li class="row">
+        <span class="lead">{line.label}</span>
+        <span class="what">{line.text}</span>
+      </li>
+    ))
+  }
+</ul>
