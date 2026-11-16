@@ -19,7 +19,7 @@ const entry = <S extends z.ZodRawShape>(shape: S) => z.strictObject({ id: z.stri
 const shelf = defineCollection({
   loader: data("shelf"),
   schema: entry({
-    kind: z.enum(["book", "film", "tv", "article"]),
+    kind: z.enum(["book", "film", "article"]),
     title: z.string().min(1),
     creator: z.string().min(1).optional(),
     year: z.number().int().optional(),
@@ -47,7 +47,7 @@ const favorites = defineCollection({
   loader: data("favorites"),
   schema: ({ image }) =>
     entry({
-      kind: z.enum(["book", "film", "tv"]),
+      kind: z.enum(["book", "film"]),
       title: z.string().min(1),
       creator: z.string().min(1).optional(),
       year: z.number().int().optional(),

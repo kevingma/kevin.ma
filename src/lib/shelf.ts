@@ -3,11 +3,11 @@ import { type CollectionEntry, getCollection } from "astro:content";
 export type Item = CollectionEntry<"shelf">["data"];
 type Name = "shelf" | "favorites" | "projects" | "now";
 
-const WALL_KINDS = ["book", "film", "tv"] as const;
+const WALL_KINDS = ["book", "film"] as const;
 const WALL_CAP = 4;
-const WALL_LABEL = { book: "books", film: "films", tv: "tv" } as const;
+const WALL_LABEL = { book: "books", film: "films" } as const;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const VERB = { book: "reading", article: "reading", film: "watching", tv: "watching" } as const;
+const VERB = { book: "reading", article: "reading", film: "watching" } as const;
 
 /** Entries of a collection in the order they are written in the file. */
 async function inFileOrder<C extends Name>(name: C): Promise<CollectionEntry<C>["data"][]> {
